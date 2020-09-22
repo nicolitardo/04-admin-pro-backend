@@ -91,14 +91,29 @@ const googleSingIn = async(req, res = response) => {
     } catch (error) {
         console.log(error);
         res.status(400).json({
-            ok: true,
+            ok: false,
             msg: 'Token no es correcto'
         });
     }
 
 }
 
+const renewToken = async(req, res = response) => {
+
+    const uid = req.uid;
+
+    // Generar el TOKEN - JWT
+    const token = await generarJWT(uid);
+
+    res.json({
+        ok: true,
+        token
+    });
+
+}
+
 module.exports = {
     login,
-    googleSingIn
+    googleSingIn,
+    renewToken
 }
