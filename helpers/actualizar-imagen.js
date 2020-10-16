@@ -49,12 +49,10 @@ const actualizarImagen = async(tipo, id, nombreArchivo) => {
             pathViejo = `./uploads/usuarios/${ usuario.img }`;
             borrarImagen(pathViejo);
 
-            hospusuarioital.img = nombreArchivo;
+            usuario.img = nombreArchivo;
             await usuario.save();
             return true;
             break;
-        default:
-
 
     }
 }
